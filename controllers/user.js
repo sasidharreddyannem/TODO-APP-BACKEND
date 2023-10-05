@@ -7,7 +7,7 @@ export const getAllUsers=async(req,res)=>{
   
 }
 
-export const login = async(req,res)=>{
+export const login = async(req,res,next)=>{
 
   try{
     const {email,password}=req.body;
@@ -26,7 +26,7 @@ export const login = async(req,res)=>{
 }
 
 
-export const register=async(req,res)=>{
+export const register=async(req,res,next)=>{
     
   try{
     const {name,email,password}=req.body;
@@ -54,7 +54,7 @@ export const register=async(req,res)=>{
   })
 }
 
-export const logout=(req,res)=>{
+export const logout=(req,res,next)=>{
   res.status(200).cookie("token","",{expires:new Date(Date.now()),
     sameSite:process.env.NODE_ENV=="Development"?"lax":"none",
     secure:process.env.NODE_ENV=="Development"?false:true,
